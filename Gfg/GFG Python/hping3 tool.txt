@@ -1,0 +1,13 @@
+hping3 tool
+Comes installed with backtrack 3
+
+Remember 
+Knowing tools and usage: Kiddie Scriptor
+Knowing how to write your own tools: Professional
+
+
+
+
+* helps scan packets, scan and sniff packets as well
+*Can spoof packets as well
+*Hex dump of packets like scapy

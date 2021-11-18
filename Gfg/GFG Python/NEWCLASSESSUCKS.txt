@@ -1,0 +1,10 @@
+Temp asnwers
+4) C
+The query attacks work against the lamport encryption scheme as they work on one way function on bits. If someone sends 2 query message of b bits, and one messsage is all 0's and on choosing all the message with all bits 1's, the attacker knows the signature bit value of all bits in all positions.
+
+
+5)All of the mentioned primitves are used inTLS which is an encryption scheme and a key exchange scheme implemented at the application layer
+
+
+6) IpSec
+IP sec
