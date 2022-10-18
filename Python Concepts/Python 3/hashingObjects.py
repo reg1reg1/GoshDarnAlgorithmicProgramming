@@ -9,16 +9,18 @@ class Student:
 		self.grade = grade
 		self.age = age
 		self._id = _id
+	# __repr__() function returns the object representation in string format. The repr() function returns the string representation of the value passed to eval function by default. For the custom class object, it returns a string enclosed in angle brackets that contains the name and address of the object by default.
 	def __repr__(self):
 		return repr((self.name, self.grade, self.age))
 	def weighted_grade(self):
 		return 'CBA'.index(self.grade) / float(self.age)
 
 	#I have overridden equals,therefore I must define hashcode or it will be implicitly set to None
+	#equals identify the position in the bucket of hashmap
 	def __eq__(self,other):
 		if self._id==other._id:
 			return True
-
+    #identifies the bucket in the hashmap
 	def __hash__(self):
 		return hash(self._id)
 

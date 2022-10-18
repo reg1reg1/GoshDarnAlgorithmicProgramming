@@ -34,20 +34,37 @@ class BinarySearchTree(Tree):
 				else:
 					self.insertwrapped(obj.left,data)
 
-	def delete(self,obj,data):
+	#returns the root node of the tree after performing a delete
+	def delete(self,data,obj=self.head):
 		if obj is None:
-			print("Element not found")
+			return self.head
+		#node to be deleted lies in the left subtree	
+		if obj.data > data:
+			obj.set_left(self.delete(obj.get_left(),data))
+		#node to be delted lies in the right subtree
+		if obj.data < data:
+			obj.set_right(self.delete(obj.get_right(),data))
+		#this is the node to be deleted
 		else:
-			if data < obj.data:
-				obj.set_left(self.delete(obj.get_left()))
-			elif data > obj.data:
-				obj.set_right(self.delete(obj.get_right()))
+			#node has no children
+			if obj.get_left() is None and obj.get_right() is None:
+				#this will get captured by the calling function
+				return None
+			#node has 2 children
+			if obj.get_left() is not None and obj.get_right() is not None:
+				inorderSuccessor = getMinNode(obj.get_right())
+				obj.data=inorderSuccessor.data
+				#python pass-by reference (objects cannot be freed)
+				inorderSuccessor=None
+				return obj
+			#only left child exists
+			elif obj.get_left() is not None:
+				return obj.get_left()
+			elif obj.get_right() is not None:
+				return obj.get_right()
 
 
-
-			
-
-
+	#returns the ptr to node 
 	def getMinNode(self,node):
 		if node.get_left() is None:
 			return node

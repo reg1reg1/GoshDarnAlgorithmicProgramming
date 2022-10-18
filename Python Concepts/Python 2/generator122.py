@@ -10,14 +10,8 @@ def nextSquare():
 # Driver code to test above generator  
 # function 
 num=0
-for num in nextSquare(): 
-    if num > 100: 
-         break    
-    print(num)
-print(num)
-print(num)
-print(num)
-print("#######################")
+
+#print("#######################")
 for num in nextSquare(): 
     if num > 100: 
          break    

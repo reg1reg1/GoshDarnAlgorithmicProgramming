@@ -9,13 +9,13 @@ We will now manually demonstrate what a decorator actually does behind the shado
 '''
 def funcDecorator(funcObject):
 	def funcWrap(x):
-		print "Func Beginning"
+		print("Func Beginning")
 		funcObject(x)
-		print "Func End"
+		print("Func End")
 	return funcWrap
 
 def foo(x):
-	print "Func has been called with ",str(x)
+	print("Func has been called with ",str(x))
 
 x = "Hello World!"
 
@@ -56,16 +56,16 @@ print("Value of nf2 is ",nf2(1))
 
 def decoratingFoo(funcObj):
 	def Helper(x):
-		print "Function begins"
+		print("Function begins")
 		funcObj(x)
-		print "Function ends"
+		print("Function ends")
 	return Helper
 
 def fooBar(x):
-	print "Printing ", str(x)
+	print("Printing ", str(x))
 
 #defining argument
-x= "HelloWorld"
+x = "HelloWorld" 
 
 
 
@@ -75,12 +75,12 @@ x= "HelloWorld"
 '''
 Analysis:
 RHS-> decoratingFoo(fooBar)
-it will call decoratingFoo with fooBar as argument  and "Helper"
-will be defined in this context and namespace which it will retain afterwards, "closure"
+it will call decoratingFoo with fooBar as argument  and "Helper")
+will be defined in this context and namespace which it will retain afterwards, "closure")
 
 decoratingFoo will return a ref to this function Helper (defined in the context explained)
 LHS->
-Now fooBar will be pointing to this Helper function
+Now fooBarOBject will be pointing to this Helper function
 Now when we call fooBar(x), Helper(x) is being called with funcObj referring to the original 
 fooBar function (as Helper was defined in this way and retained when decoratingFoo(foobar) was 
 called)
@@ -90,8 +90,8 @@ so Helper(x):
   blah blah
 is what the fooBar(x) will do
 '''
-fooBar = decoratingFoo(fooBar)
-fooBar(x)
+fooBarObject = decoratingFoo(fooBar)
+fooBarObject(x)
 
 
 
@@ -104,7 +104,7 @@ We could use @ and the decorator will do it behind the scenes
 def checkArgtype(fRef):
 	def wrapIt(x):
 		if type(x) == int:
-			print "begins"
+			print("begins")
 			return fRef(x)
 		else:
 			return "Error, argument type not Integer"
@@ -114,7 +114,7 @@ def checkArgtype(fRef):
 def multiplyIntBy10(x):
 	return x*10
 
-print str(multiplyIntBy10(100))
+print(str(multiplyIntBy10(100)))
 
 
 class NewClass(object):
@@ -123,15 +123,15 @@ class NewClass(object):
 
 	def __call__(self,funcRef): 
 		def wrapperFunction(x):
-			print "Need to execute the passed function"
+			print("Need to execute the passed function")
 			funcRef(x)
-			print "Ending call to the function"
+			print("Ending call to the function")
 		return wrapperFunction
 
 aFunc = NewClass()
 
 @aFunc
 def innocentFunction(x):
-	print x
+	print(x)
 
 innocentFunction("I feel like, I am gonna be surrounded by someone")
