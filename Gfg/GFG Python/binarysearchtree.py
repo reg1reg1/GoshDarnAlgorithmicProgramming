@@ -35,15 +35,16 @@ class BinarySearchTree(Tree):
 					self.insertwrapped(obj.left,data)
 
 	#returns the root node of the tree after performing a delete
-	def delete(self,data,obj=self.head):
+	def delete(self,data,obj=None):
+		print(data,obj.data)
 		if obj is None:
 			return self.head
 		#node to be deleted lies in the left subtree	
 		if obj.data > data:
-			obj.set_left(self.delete(obj.get_left(),data))
+			obj.set_left(self.delete(data,obj.get_left()))
 		#node to be delted lies in the right subtree
 		if obj.data < data:
-			obj.set_right(self.delete(obj.get_right(),data))
+			obj.set_right(self.delete(data,obj.get_right()))
 		#this is the node to be deleted
 		else:
 			#node has no children
@@ -52,19 +53,24 @@ class BinarySearchTree(Tree):
 				return None
 			#node has 2 children
 			if obj.get_left() is not None and obj.get_right() is not None:
-				inorderSuccessor = getMinNode(obj.get_right())
+				inorderSuccessor = self.getMinNode(obj.get_right())
+				print("inorderSuccessor ",inorderSuccessor.data)
 				obj.data=inorderSuccessor.data
 				#python pass-by reference (objects cannot be freed)
-				inorderSuccessor=None
-				return obj
+				#inorderSuccessor=None wont work as inordersuccessor will be assigned to none
+				#deleting the duplicate node, and setting the right of obj to receive this value
+				obj.set_right(self.delete(inorderSuccessor.data,obj.get_right()))
+				
 			#only left child exists
 			elif obj.get_left() is not None:
 				return obj.get_left()
 			elif obj.get_right() is not None:
 				return obj.get_right()
+		## important to return the object reference to the calling function
+		return obj
 
 
-	#returns the ptr to node 
+	#returns the reference to node 
 	def getMinNode(self,node):
 		if node.get_left() is None:
 			return node
@@ -74,17 +80,23 @@ class BinarySearchTree(Tree):
 def main():
 	bst = BinarySearchTree()
 		
-	bst.insert(20)
 	bst.insert(10)
-	bst.insert(30)
+	bst.insert(5)
+	bst.insert(14)
+	bst.insert(1)
+	bst.insert(7)
+	bst.insert(12)
 	bst.insert(25)
-	bst.insert(50)
-	bst.insert(40)
+	bst.insert(11)
+	bst.insert(13)
+	bst.insert(16)
+	bst.insert(30)
 	bst.insert(15)
-	print("Head of tree ",bst.getHead().get_left().data)
+	bst.insert(17)
+	print("Head of tree ",bst.getHead().data)
 	bst.Inorder(bst.getHead())
 	print()
-	bst.delete(bst.getHead(),25)
+	bst.delete(25,bst.getHead())
 	print()
 	bst.Inorder(bst.getHead())
 

@@ -4,7 +4,7 @@ class Solution:
         totsum=nums[0]
         mmax=nums[0]
         currmax=nums[0]
-        #Basci Kadane, candidate 1
+        #Basic Kadane, candidate 1
         for i in range(1,l):
             currmax=max(nums[i],nums[i]+currmax)
             mmax=max(currmax,mmax)
