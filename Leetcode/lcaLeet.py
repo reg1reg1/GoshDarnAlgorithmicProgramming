@@ -14,9 +14,12 @@ class Solution:
 		node_l = self.lowestCommonAncestor(root.left,p,q)
 		node_r = self.lowestCommonAncestor(root.right,p,q)
 
+
+		#if both queries return value then both p and q are present on either side of the current node, making this node the LCA
 		if node_l and node_r:
 			return root
 
+		#if node_l exists and node_r does not, both nodes exist in the left side of the 
 		if node_l:
 			return node_r
 		else:

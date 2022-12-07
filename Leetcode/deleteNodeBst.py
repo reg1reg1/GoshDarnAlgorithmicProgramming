@@ -18,11 +18,12 @@ class Solution:
         elif root.val < key:
             root.right = self.deleteNode(root.right,key)
 
+        #this is the key to be deleted
         else:
-            #no children
+            #no children, set root to none. (remember the parent is going to receive and set the return value )
             if root.left is None and root.right is None:
                 root=None
-            #2 children
+            #2 children, get the smallest child in the right subtree
             if root.left is not None and root.right is not None:
                 inorderSuccessor = self.getMinNode(root.right)
                 root.val=inorderSuccessor.val

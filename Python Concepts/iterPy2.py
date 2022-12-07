@@ -33,10 +33,11 @@ while True:
 class PowTwo:
     """Class to implement an iterator
     of powers of two"""
-
+    
     def __init__(self, max = 0):
         self.max = max
 
+    ##this is called when iteration is initialized
     def __iter__(self):
         self.n = 0
         return self
@@ -71,7 +72,7 @@ class InfIter:
         self.num += 2
         return num
 
-powerObject = PowTwo(10)
+powerObject = PowTwo(10) #max is 0 if not initialized
 print(list(powerObject))
 
 

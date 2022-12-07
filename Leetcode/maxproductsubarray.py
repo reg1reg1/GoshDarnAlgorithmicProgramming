@@ -7,7 +7,7 @@ class Solution:
         for i in nums:
             #max out of the current element, currentelem*maxpositiveproduct, minproductending here*a[i] (assign it to temp as we need to calculate minProdNeg before the assignment)
             temp=max(max(maxProdPos*a[i],a[i]),a[i]*minProdNeg)
-            #negative product so far here
+            #most negative product so far, least valued product
             minProdNeg=min(min(a[i],a[i]*minProdNeg),a[i]*maxProdPos)
 
             maxProdPos=temp

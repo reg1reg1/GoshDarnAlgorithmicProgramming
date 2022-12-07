@@ -15,7 +15,7 @@ y+=20
 #shallowcopy creates a new object
 z=copy.copy(x)
 z+=20
-print x
+print(x)
 
 
 
@@ -23,7 +23,7 @@ print x
 l1 = ['a','b','c','d','e']
 l2 = l1
 l2.append('f')
-print l1 #f will get appended as both point to same object
+print(l1) #f will get appended as both point to same object
 
 #performing a shallowcopy
 
@@ -31,7 +31,7 @@ l3 = ['a','b','c']
 l4 = l3[:] #one way of creating a shallow copy(using slice operation)
 #above is same as l4 = copy.copy(l3)
 l4.append('d')
-print l3
+print(l3)
 
 #what will happen if we have sublist(or some non primitive object in the list), 
 #the lists will have the reference to the object
@@ -41,7 +41,7 @@ l6 = copy.copy(l5)
 
 #will not reflect in l5
 l6.append('g')
-print "first print",l5
+print("first print",l5)
 
 
 #3rd element is a list
@@ -49,10 +49,15 @@ print "first print",l5
 #all other elements (primitives) are same
 #will reflect in l5
 l6[3].append('x')
-print "second print",l5
+print("second print",l5)
 
 #How do python functions treat arguments?
-
+x=[1,2,3,4,5]
+def changeMe(x):
+	
+	x.append(6)
+changeMe(x)
+print(x)
 
 
 
