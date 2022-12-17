@@ -76,8 +76,9 @@ powerObject = PowTwo(10) #max is 0 if not initialized
 print(list(powerObject))
 
 
-
-
+# iterable. the Iter function is always called when the powerObject is interacted with as an iterable
+for i in powerObject:
+    print(i)
 
 
 
